@@ -49,9 +49,8 @@ public class Troco {
 	private static double lerValor()
 	{
 		Scanner ler = new Scanner(System.in);
-		double x;
 		System.out.printf("Informe um valor: ");
-		x = ler.nextDouble();	
+		double x = ler.nextDouble();	
 		ler.close();
 		return x;
 	}

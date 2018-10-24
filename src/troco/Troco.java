@@ -42,7 +42,8 @@ public class Troco {
 	{
 		System.out.println("Distribuição do troco");
 		quantidade.entrySet().forEach(entry -> 
-			System.out.println(entry.getKey() + ": " + entry.getValue()));
+			System.out.println((Double.parseDouble(entry.getKey()) >= 1 ? "Cédula de " : "Moeda de ") 
+					+ entry.getKey() + ": " + entry.getValue()));
 	}
 
 	private static double lerValor()

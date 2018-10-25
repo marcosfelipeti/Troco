@@ -7,12 +7,19 @@ import java.util.Scanner;
 public class Troco {
 	
 	public static void main(String[] args) {
-		double valorDigitado = lerValor();
-		Map<String, Integer> quantidade = darTrocoContabilizado(valorDigitado);
-		imprimirTroco(quantidade);
+
+		double valorDigitado = 0;
+		try {
+			valorDigitado = lerValor(null);
+			Map<String, Integer> quantidade = darTrocoContabilizado(valorDigitado);
+			imprimirTroco(quantidade);	
+		} 
+		catch (Exception e) {
+			System.out.println("Valor invalido!");
+		}
 	}
 	
-	private static Map<String, Integer> darTrocoContabilizado(double valorDigitado)
+	public static Map<String, Integer> darTrocoContabilizado(double valorDigitado)
 	{
 		double[] cedulasMoedas = {100.0, 50.0, 10.0, 5.0, 1.0, 0.50, 0.10, 0.05, 0.01};
 		Map<String, Integer> quantidade = new HashMap<>();
@@ -38,7 +45,7 @@ public class Troco {
 		return quantidade;
 	}
 	
-	private static void imprimirTroco(Map<String, Integer> quantidade)
+	public static void imprimirTroco(Map<String, Integer> quantidade)
 	{
 		System.out.println("Distribuição do troco");
 		quantidade.entrySet().forEach(entry -> 
@@ -46,13 +53,21 @@ public class Troco {
 					+ entry.getKey() + ": " + entry.getValue()));
 	}
 
-	private static double lerValor()
+	public static double lerValor(Double value) throws Exception
 	{
 		Scanner ler = new Scanner(System.in);
+		double valorLido;
 		System.out.printf("Informe um valor: ");
-		double x = ler.nextDouble();	
+		valorLido = value == null ? ler.nextDouble() : value;
 		ler.close();
-		return x;
+		
+		if(valorLido < 0)
+		{
+			
+			throw new RuntimeException();
+		}
+			return valorLido;			
+
 	}
 	
 }

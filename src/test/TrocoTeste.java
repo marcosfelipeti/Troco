@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import troco.Troco;
 
@@ -37,5 +38,33 @@ class TrocoTeste {
 		assertEquals(500.0, Troco.lerValor(500.0));
 	}
 	
+	@Test
+	public void entradaDadosMainTeste() throws Exception
+	{
+		String[] args = {"500.0"};
+		Troco.main(args);
+	}
+	
+	@Test
+	public void entradaDadosMainInvalidosTeste() 
+	{
+		try {
+			String[] args = {"500.0"};
+			Troco.main(args);
+		} catch (Exception e) {
+		}
+		
+	}
+	
+	@Test
+	public void entradaDadosInvalidosTeste() 
+	{
+		try {
+			Troco.lerValor(-500.0);
+		} catch (Exception e) {
+			assertTrue(e instanceof RuntimeException);
+		}
+		
+	}
 
 }

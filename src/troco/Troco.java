@@ -10,7 +10,7 @@ public class Troco {
 
 		double valorDigitado = 0;
 		try {
-			valorDigitado = lerValor(null);
+			valorDigitado = lerValor(args[0] == "" ? null : Double.valueOf(args[0]));
 			Map<String, Integer> quantidade = darTrocoContabilizado(valorDigitado);
 			imprimirTroco(quantidade);	
 		} 
